@@ -6,7 +6,7 @@
     --shadow: 0px 15px 30px -35px black;
     --radius: 15px;
     --box-size-width: 240px;
-    --tex-description-color: rgb(110, 110, 110);
+    --tex-description-color: rgb(87, 87, 87);
     --tex-icon-color: rgb(44, 44, 44);
     --text-description-size: 14px;
 }
@@ -19,17 +19,17 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: auto 10fr auto;
     background-color: var(--background-color);
-}
-
-header, footer{
-    background-color: white;
     color: var(--tex-icon-color);
-    box-shadow: var(--shadow);
-    font-size: 20px;
     svg{
         fill: var(--tex-icon-color);
         height: 45px;
     }
+}
+
+header, footer{
+    background-color: white;
+    box-shadow: var(--shadow);
+    font-size: 20px;
     >div{
         display: grid;
         grid-template-columns: auto auto;
@@ -40,7 +40,54 @@ header, footer{
 }
 
 main{
-
+    padding: 30px;
+    >div{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        align-items: center;
+        justify-items: center;
+        gap: 15px;
+    }
+    .book-box{
+        position: relative;
+        display: grid;
+        grid-template-columns: 1f;
+        grid-template-rows: repeat(6, 1fr);
+        align-items: center;
+        height: 200px;
+        width: 200px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        background-color: white;
+        padding: 15px;
+        h3 {
+            margin: 0;
+        }
+        h4 {
+            margin: 0 10px;
+            color: var(--tex-description-color);
+        }
+        .book-box-buttons{
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            svg {
+                height: 30px;
+            }
+        }
+    }
+    #add-new-book{
+        display: grid;
+        grid-template-columns: auto auto;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        grid-column: 1 / -1;
+        grid-row: -1 / 0;
+        svg {
+            height: 30px;
+        }
+    }
 }
 
 footer{
@@ -50,6 +97,68 @@ footer{
     }
     >div{
         column-gap: 10px;
+    }
+}
+
+#book-form {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr auto 1fr;
+    background-color: #24242499;
+    position: fixed;
+    >div {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        background-color: white;
+        border-radius: var(--radius);
+        padding: 40px 20px;
+        justify-items: center;
+        color: rgb(134, 134, 134);
+        position: relative;
+        h4{
+            margin: 0 0 30px 0;
+            text-align: center;
+        }
+    }
+    form{
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        gap: 15px;
+        button {
+            grid-column: 1 / -1;
+        }
+        label{
+            width: 120px;
+            text-align: end;
+            display: flex;
+            justify-content: end;
+        }
+        input{
+            justify-self: start;
+            border: 1px solid rgb(134, 134, 134);
+            border-radius: var(--radius);
+            height: 25px;
+            
+        }
+        button{
+            justify-self: center;
+            border-radius: var(--radius);
+            padding: 10px 30px;
+            border: 0;
+            background-color: var(--tex-icon-color);
+            font-weight: bold;
+            color: white;
+        }
+    }
+    svg{
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        height: 27px;
+        fill: rgb(173, 173, 173);
     }
 }
 
