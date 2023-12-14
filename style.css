@@ -1,3 +1,55 @@
-svg{
-    fill: firebrick;
+:root{
+    --principal-color: #ddd6fe;
+    --background-color: #e2e8f0;
+    --profile-background-color: #c4b5fd;
+    --icon-size: 25px;
+    --shadow: 0px 15px 30px -35px black;
+    --radius: 15px;
+    --box-size-width: 240px;
+    --tex-description-color: rgb(110, 110, 110);
+    --tex-icon-color: rgb(44, 44, 44);
+    --text-description-size: 14px;
 }
+
+body {
+    margin: 0;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 10fr auto;
+    background-color: var(--background-color);
+}
+
+header, footer{
+    background-color: white;
+    color: var(--tex-icon-color);
+    box-shadow: var(--shadow);
+    font-size: 20px;
+    svg{
+        fill: var(--tex-icon-color);
+        height: 45px;
+    }
+    >div{
+        display: grid;
+        grid-template-columns: auto auto;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+main{
+
+}
+
+footer{
+    font-size: 15px;
+    svg{
+        height: 35px;
+    }
+    >div{
+        column-gap: 10px;
+    }
+}
+
