@@ -16,6 +16,7 @@ function addBookToMyLibrary (author,tittle,pages,read){
 
 addBookToMyLibrary("JK","Harry Potter",300,true);
 addBookToMyLibrary("Akira","Dragon Ball",300,true);
+addBookToMyLibrary("Akira","Dragon Ball Z",300,true);
 addBookToMyLibrary("Ale","Mi vida",300,false);
 
 console.table(myLibrary);
@@ -57,5 +58,17 @@ function showBooksOnScreen(){
 
     });
 }
+
+const newBook = document.querySelector(".newBook h3");
+newBook.addEventListener('click', () => {
+    const showForm = document.querySelector(".bookForm");
+    showForm.style = "display: grid;";
+});
+
+const closeNewBook = document.querySelector(".bookForm svg");
+closeNewBook.addEventListener('click', () => {
+    const showForm = document.querySelector(".bookForm");
+    showForm.style = "display: none;";
+});
 
 showBooksOnScreen();
