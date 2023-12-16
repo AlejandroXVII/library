@@ -19,13 +19,29 @@ addBookToMyLibrary("Akira","Dragon Ball",300,true);
 addBookToMyLibrary("Akira","Dragon Ball Z",300,true);
 addBookToMyLibrary("Ale","Mi vida",300,false);
 
+function delateBook() {
+    let id = this.id;
+    const bookBox = document.querySelector('#book'+id);
+    const trash= document.querySelector('#book'+id+' .trash');
+    bookBox.id="deleted";
+    trash.id="deleted";
+    bookBox.style = "display: none";
+    console.log(id);
+    
+    myLibrary[id]="";
+    /*updateID();*/
+    console.table(myLibrary);
+}
+
 function showBooksOnScreen(books){
     const bookcase = document.querySelector('#library');
+    let bookIndex = 0
     books.forEach(element => {
-        
         const newBookBox = document.createElement('div');
         newBookBox.className = "book-box";
+        newBookBox.id = "book"+bookIndex;
         bookcase.appendChild(newBookBox);
+        bookIndex++;
 
         const tittle1 = document.createElement('h3');
         tittle1.textContent = "AUTHOR:";
@@ -52,15 +68,17 @@ function showBooksOnScreen(books){
         buttonBox.className = "book-box-buttons";
         newBookBox.appendChild(buttonBox);
 
-        buttonBox.insertAdjacentHTML("afterend","<div class='book-box-buttons'><span class='eye'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z' /></svg></span><span class='trash'></span><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><title>trash-can-outline</title><path d='M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z' /></svg></span></div>")
+        buttonBox.insertAdjacentHTML("afterend","<div class='book-box-buttons'><span class='eye'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z' /></svg></span><span></span><svg class='trash' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><title>trash-can-outline</title><path d='M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z' /></svg></span></div>")
     });
 }
 
 function showOneBooksOnScreen(book){
     const bookcase = document.querySelector('#library');
-        
+    let id = myLibrary.length-1; 
+
     const newBookBox = document.createElement('div');
     newBookBox.className = "book-box";
+    newBookBox.id = "book"+String(id);
     bookcase.appendChild(newBookBox);
 
     const tittle1 = document.createElement('h3');
@@ -88,8 +106,11 @@ function showOneBooksOnScreen(book){
     buttonBox.className = "book-box-buttons";
     newBookBox.appendChild(buttonBox);
 
-    buttonBox.insertAdjacentHTML("afterend","<div class='book-box-buttons'><span class='eye'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z' /></svg></span><span class='trash'></span><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><title>trash-can-outline</title><path d='M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z' /></svg></span></div>")
-  
+    buttonBox.insertAdjacentHTML("afterend","<div class='book-box-buttons'><span class='eye'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z' /></svg></span><span ></span><svg class='trash' id='"+id+"' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><title>trash-can-outline</title><path d='M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z' /></svg></span></div>")
+    const delateLastButton = document.querySelector('#book'+id+' .trash');
+
+    delateLastButton.addEventListener('click', delateBook);
+    console.log(delateLastButton);
 }
 
 const newBook = document.querySelector(".newBook h3");
@@ -123,3 +144,23 @@ const onSubmit = event => {
 };
 
 form.addEventListener('submit', onSubmit);
+
+const delateButton = document.querySelectorAll('.trash');
+for (let index = 0; index < myLibrary.length; index++) {
+    delateButton[index].id = index;
+    delateButton[index].addEventListener('click', delateBook);
+   
+}
+
+function updateID (){
+    const bookBox = document.querySelectorAll('.book-box');
+    const delateButton = document.querySelectorAll('.trash');
+    let newIndex = 0;
+    for (let index = 0; index < myLibrary.length; index++) {
+        if (delateButton[index].id !== "deleted"){
+            bookBox[index].id = "book"+newIndex;
+            delateButton[index].id = newIndex;
+            newIndex++;
+        }
+    }
+}
